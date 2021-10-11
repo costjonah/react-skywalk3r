@@ -1,6 +1,6 @@
 # react-skywalk3r
 
-Empty project.
+MVP
 
 ## Building and running on localhost
 
