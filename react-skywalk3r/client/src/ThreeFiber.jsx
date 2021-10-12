@@ -75,7 +75,7 @@ function Sun() {
   useFrame(() => cubeCamera.update(gl, scene));
   return (
     <mesh visible position={[0, 0, 0]} rotation={[0, 0, 0]} castShadow>
-      <sphereBufferGeometry attach="geometry" args={[10, 30, 30]} />
+      <sphereBufferGeometry attach="geometry" args={[109, 30, 30]} />
       <meshBasicMaterial
         attach="material"
         // envMap={cubeCamera.renderTarget.texture}
@@ -95,12 +95,12 @@ function Mercury() {
   return (
     <mesh
       visible
-      position={[25, 0, 0]}
+      position={[140, 0, 0]}
       rotation={[0, 0, 0]}
       castShadow
       ref={mercDisplay}
     >
-      <sphereBufferGeometry attach="geometry" args={[0.25, 10, 10]} />
+      <sphereBufferGeometry attach="geometry" args={[0.38, 10, 10]} />
       <meshBasicMaterial
         attach="material"
         wireframe
@@ -119,12 +119,12 @@ function Venus() {
   return (
     <mesh
       visible
-      position={[45, 0, 0]}
+      position={[160, 0, 0]}
       rotation={[0, 0, 0]}
       castShadow
       ref={venusDisplay}
     >
-      <sphereBufferGeometry attach="geometry" args={[0.5, 10, 10]} />
+      <sphereBufferGeometry attach="geometry" args={[0.95, 10, 10]} />
       <meshBasicMaterial
         attach="material"
         wireframe
@@ -143,12 +143,12 @@ function Earth() {
   return (
     <mesh
       visible
-      position={[65, 0, 0]}
+      position={[180, 0, 0]}
       rotation={[0, 0, 0]}
       castShadow
       ref={earthDisplay}
     >
-      <sphereBufferGeometry attach="geometry" args={[1.5, 10, 10]} />
+      <sphereBufferGeometry attach="geometry" args={[1, 10, 10]} />
       <meshBasicMaterial
         attach="material"
         wireframe
@@ -167,12 +167,12 @@ function Mars() {
   return (
     <mesh
       visible
-      position={[95, 0, 0]}
+      position={[200, 0, 0]}
       rotation={[0, 0, 0]}
       castShadow
       ref={marsDisplay}
     >
-      <sphereBufferGeometry attach="geometry" args={[1, 10, 10]} />
+      <sphereBufferGeometry attach="geometry" args={[0.53, 10, 10]} />
       <meshBasicMaterial
         attach="material"
         wireframe
@@ -191,12 +191,12 @@ function Jupiter() {
   return (
     <mesh
       visible
-      position={[140, 0, 0]}
+      position={[250, 0, 0]}
       rotation={[0, 0, 0]}
       castShadow
       ref={jupDisplay}
     >
-      <sphereBufferGeometry attach="geometry" args={[4, 10, 10]} />
+      <sphereBufferGeometry attach="geometry" args={[11.19, 10, 10]} />
       <meshBasicMaterial
         attach="material"
         wireframe
@@ -215,12 +215,12 @@ function Saturn() {
   return (
     <mesh
       visible
-      position={[170, 0, 0]}
+      position={[300, 0, 0]}
       rotation={[0, 0, 0]}
       castShadow
       ref={satDisplay}
     >
-      <sphereBufferGeometry attach="geometry" args={[3.75, 10, 10]} />
+      <sphereBufferGeometry attach="geometry" args={[9.4, 10, 10]} />
       <meshBasicMaterial
         attach="material"
         wireframe
@@ -239,12 +239,12 @@ function Neptune() {
   return (
     <mesh
       visible
-      position={[215, 0, 0]}
+      position={[315, 0, 0]}
       rotation={[0, 0, 0]}
       castShadow
       ref={neptDisplay}
     >
-      <sphereBufferGeometry attach="geometry" args={[2.75, 10, 10]} />
+      <sphereBufferGeometry attach="geometry" args={[4.04, 10, 10]} />
       <meshBasicMaterial
         attach="material"
         wireframe
@@ -263,12 +263,12 @@ function Uranus() {
   return (
     <mesh
       visible
-      position={[250, 0, 0]}
+      position={[350, 0, 0]}
       rotation={[0, 0, 0]}
       castShadow
       ref={uranusDisplay}
     >
-      <sphereBufferGeometry attach="geometry" args={[2.25, 10, 10]} />
+      <sphereBufferGeometry attach="geometry" args={[3.88, 10, 10]} />
       <meshBasicMaterial
         attach="material"
         wireframe
@@ -287,12 +287,12 @@ function Pluto() {
   return (
     <mesh
       visible
-      position={[300, 0, 0]}
+      position={[400, 0, 0]}
       rotation={[0, 0, 0]}
       castShadow
       ref={pluDisplay}
     >
-      <sphereBufferGeometry attach="geometry" args={[0.35, 10, 10]} />
+      <sphereBufferGeometry attach="geometry" args={[0.18, 10, 10]} />
       <meshBasicMaterial
         attach="material"
         wireframe
@@ -319,9 +319,7 @@ function App() {
         // aspect={width / height}
         // near={0.1}
         // far={1000}
-
         // position={[0, 0, 20]}
-
         className="canvas"
       >
         <Navigate />
@@ -337,10 +335,10 @@ function App() {
         <Pluto />
         <SpaceEnv />
         <Stars
-          radius={100}
+          radius={225}
           depth={50}
-          count={5000}
-          factor={4}
+          count={25000}
+          factor={7}
           saturation={0}
           fade
         />
