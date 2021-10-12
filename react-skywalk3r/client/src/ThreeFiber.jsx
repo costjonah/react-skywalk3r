@@ -1,8 +1,20 @@
 import React, { useRef } from "react";
 import {
-  Canvas, useFrame, useLoader, useThree, extend } from "@react-three/fiber";
+  Canvas,
+  useFrame,
+  useLoader,
+  useThree,
+  extend,
+} from "@react-three/fiber";
+import { Stars } from "@react-three/drei";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { CubeTextureLoader, CubeCamera, WebGLCubeRenderTarget, RGBFormat, LinearMipmapLinearFilter } from "three";
+import {
+  CubeTextureLoader,
+  CubeCamera,
+  WebGLCubeRenderTarget,
+  RGBFormat,
+  LinearMipmapLinearFilter,
+} from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import "/Users/JonahC/HR/SEI/Senior/react-skywalk3r/react-skywalk3r/client/dist/styles.css";
 
@@ -21,7 +33,7 @@ const Navigate = () => {
       ref={controls}
       args={[camera, domElement]}
       autoRotate={true}
-      enableZoom={false}
+      enableZoom={true}
     />
   );
 };
@@ -30,7 +42,12 @@ function SpaceEnv() {
   const { scene } = useThree();
   const loader = new CubeTextureLoader();
   const texture = loader.load([
-
+    "https://cdn.pixabay.com/photo/2016/06/05/07/59/stars-1436950_960_720.jpg",
+    "https://cdn.pixabay.com/photo/2016/06/05/07/59/stars-1436950_960_720.jpg",
+    "https://cdn.pixabay.com/photo/2016/06/05/07/59/stars-1436950_960_720.jpg",
+    "https://cdn.pixabay.com/photo/2016/06/05/07/59/stars-1436950_960_720.jpg",
+    "https://cdn.pixabay.com/photo/2016/06/05/07/59/stars-1436950_960_720.jpg",
+    "https://cdn.pixabay.com/photo/2016/06/05/07/59/stars-1436950_960_720.jpg",
   ]);
   scene.background = texture;
   return null;
@@ -47,7 +64,6 @@ function SpaceEnv() {
 
 function Sun() {
   const { scene, gl } = useThree();
-  // const display = useRef();
   const cubeRenderTarget = new WebGLCubeRenderTarget(256, {
     format: RGBFormat,
     generateMipmaps: true,
@@ -56,11 +72,10 @@ function Sun() {
   const cubeCamera = new CubeCamera(1, 1000, cubeRenderTarget);
   cubeCamera.position.set(0, 100, 0);
   scene.add(cubeCamera);
-  // useFrame(() => (display.current.rotation.y += 0.001));
   useFrame(() => cubeCamera.update(gl, scene));
   return (
     <mesh visible position={[0, 0, 0]} rotation={[0, 0, 0]} castShadow>
-      <sphereBufferGeometry attach="geometry" args={[2, 32, 32]} />
+      <sphereBufferGeometry attach="geometry" args={[10, 30, 30]} />
       <meshBasicMaterial
         attach="material"
         // envMap={cubeCamera.renderTarget.texture}
@@ -74,16 +89,262 @@ function Sun() {
   );
 }
 
+function Mercury() {
+  const mercDisplay = useRef();
+  useFrame(() => (mercDisplay.current.rotation.y += 0.01));
+  return (
+    <mesh
+      visible
+      position={[25, 0, 0]}
+      rotation={[0, 0, 0]}
+      castShadow
+      ref={mercDisplay}
+    >
+      <sphereBufferGeometry attach="geometry" args={[0.25, 10, 10]} />
+      <meshBasicMaterial
+        attach="material"
+        wireframe
+        color="crimson"
+        roughness={0.1}
+        metalness={1}
+        transparent
+      />
+    </mesh>
+  );
+}
+
+function Venus() {
+  const venusDisplay = useRef();
+  useFrame(() => (venusDisplay.current.rotation.y += 0.01));
+  return (
+    <mesh
+      visible
+      position={[45, 0, 0]}
+      rotation={[0, 0, 0]}
+      castShadow
+      ref={venusDisplay}
+    >
+      <sphereBufferGeometry attach="geometry" args={[0.5, 10, 10]} />
+      <meshBasicMaterial
+        attach="material"
+        wireframe
+        color="tan"
+        roughness={0.1}
+        metalness={1}
+        transparent
+      />
+    </mesh>
+  );
+}
+
+function Earth() {
+  const earthDisplay = useRef();
+  useFrame(() => (earthDisplay.current.rotation.y += 0.01));
+  return (
+    <mesh
+      visible
+      position={[65, 0, 0]}
+      rotation={[0, 0, 0]}
+      castShadow
+      ref={earthDisplay}
+    >
+      <sphereBufferGeometry attach="geometry" args={[1.5, 10, 10]} />
+      <meshBasicMaterial
+        attach="material"
+        wireframe
+        color="green"
+        roughness={0.1}
+        metalness={1}
+        transparent
+      />
+    </mesh>
+  );
+}
+
+function Mars() {
+  const marsDisplay = useRef();
+  useFrame(() => (marsDisplay.current.rotation.y += 0.01));
+  return (
+    <mesh
+      visible
+      position={[95, 0, 0]}
+      rotation={[0, 0, 0]}
+      castShadow
+      ref={marsDisplay}
+    >
+      <sphereBufferGeometry attach="geometry" args={[1, 10, 10]} />
+      <meshBasicMaterial
+        attach="material"
+        wireframe
+        color="#C2452D"
+        roughness={0.1}
+        metalness={1}
+        transparent
+      />
+    </mesh>
+  );
+}
+
+function Jupiter() {
+  const jupDisplay = useRef();
+  useFrame(() => (jupDisplay.current.rotation.y += 0.01));
+  return (
+    <mesh
+      visible
+      position={[140, 0, 0]}
+      rotation={[0, 0, 0]}
+      castShadow
+      ref={jupDisplay}
+    >
+      <sphereBufferGeometry attach="geometry" args={[4, 10, 10]} />
+      <meshBasicMaterial
+        attach="material"
+        wireframe
+        color="#e36e4b"
+        roughness={0.1}
+        metalness={1}
+        transparent
+      />
+    </mesh>
+  );
+}
+
+function Saturn() {
+  const satDisplay = useRef();
+  useFrame(() => (satDisplay.current.rotation.y += 0.01));
+  return (
+    <mesh
+      visible
+      position={[170, 0, 0]}
+      rotation={[0, 0, 0]}
+      castShadow
+      ref={satDisplay}
+    >
+      <sphereBufferGeometry attach="geometry" args={[3.75, 10, 10]} />
+      <meshBasicMaterial
+        attach="material"
+        wireframe
+        color="#f2d492"
+        roughness={0.1}
+        metalness={1}
+        transparent
+      />
+    </mesh>
+  );
+}
+
+function Neptune() {
+  const neptDisplay = useRef();
+  useFrame(() => (neptDisplay.current.rotation.y += 0.01));
+  return (
+    <mesh
+      visible
+      position={[215, 0, 0]}
+      rotation={[0, 0, 0]}
+      castShadow
+      ref={neptDisplay}
+    >
+      <sphereBufferGeometry attach="geometry" args={[2.75, 10, 10]} />
+      <meshBasicMaterial
+        attach="material"
+        wireframe
+        color="navy"
+        roughness={0.1}
+        metalness={1}
+        transparent
+      />
+    </mesh>
+  );
+}
+
+function Uranus() {
+  const uranusDisplay = useRef();
+  useFrame(() => (uranusDisplay.current.rotation.y += 0.01));
+  return (
+    <mesh
+      visible
+      position={[250, 0, 0]}
+      rotation={[0, 0, 0]}
+      castShadow
+      ref={uranusDisplay}
+    >
+      <sphereBufferGeometry attach="geometry" args={[2.25, 10, 10]} />
+      <meshBasicMaterial
+        attach="material"
+        wireframe
+        color="#4fd0e7"
+        roughness={0.1}
+        metalness={1}
+        transparent
+      />
+    </mesh>
+  );
+}
+
+function Pluto() {
+  const pluDisplay = useRef();
+  useFrame(() => (pluDisplay.current.rotation.y += 0.01));
+  return (
+    <mesh
+      visible
+      position={[300, 0, 0]}
+      rotation={[0, 0, 0]}
+      castShadow
+      ref={pluDisplay}
+    >
+      <sphereBufferGeometry attach="geometry" args={[0.35, 10, 10]} />
+      <meshBasicMaterial
+        attach="material"
+        wireframe
+        color="#violet"
+        roughness={0.1}
+        metalness={1}
+        transparent
+      />
+    </mesh>
+  );
+}
+
 function App() {
+  const width = window.innerWidth; // canvas width
+  const height = window.innerHeight; // canvas heig
   return (
     <>
-    <Canvas
-    camera={{ position: [0, 0, 20], fov: 50, near: 15, far: 40 }}
-    className="canvas">
-      <Navigate />
-      <Sun />
-      <SpaceEnv />
-    </Canvas>
+      <Canvas
+        // camera={{ position: [0, 0, 20], fov: 50, near: 15, far: 40 }}
+        // orthographic camera={{ zoom: 50, position: [0,0,100] }}
+        // perspectiveCamera
+        // name="camera"
+        // fov={75}
+        // aspect={width / height}
+        // near={0.1}
+        // far={1000}
+
+        // position={[0, 0, 20]}
+
+        className="canvas"
+      >
+        <Navigate />
+        <Sun />
+        <Mercury />
+        <Venus />
+        <Earth />
+        <Mars />
+        <Jupiter />
+        <Saturn />
+        <Neptune />
+        <Uranus />
+        <Pluto />
+        <SpaceEnv />
+        <Stars
+          radius={100}
+          depth={50}
+          count={5000}
+          factor={4}
+          saturation={0}
+          fade
+        />
+      </Canvas>
     </>
   );
 }
