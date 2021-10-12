@@ -15,6 +15,7 @@ import {
   RGBFormat,
   LinearMipmapLinearFilter,
 } from "three";
+import { FlyControls } from "three/examples/jsm/controls/FlyControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import "/Users/JonahC/HR/SEI/Senior/react-skywalk3r/react-skywalk3r/client/dist/styles.css";
 
@@ -32,7 +33,7 @@ const Navigate = () => {
     <orbitControls
       ref={controls}
       args={[camera, domElement]}
-      autoRotate={true}
+      autoRotate={false}
       enableZoom={true}
     />
   );
@@ -52,6 +53,15 @@ function SpaceEnv() {
   scene.background = texture;
   return null;
 }
+
+// function KeyControls() {
+//   const controls = new FlyControls( camera, renderer.domElement );
+//   controls.movementSpeed = 1000;
+// 				controls.domElement = renderer.domElement;
+// 				controls.rollSpeed = Math.PI / 24;
+// 				controls.autoForward = false;
+// 				controls.dragToLook = false;
+// }
 
 // function BackDrop() {
 //   return (
@@ -233,13 +243,62 @@ function Saturn() {
   );
 }
 
+function RingOne() {
+  const ringOneDisplay = useRef();
+  useFrame(() => (ringOneDisplay.current.rotation.y += 0.0));
+  return (
+    <mesh
+      visible
+      position={[300, 0, 0]}
+      rotation={[30, 10, 0]}
+      castShadow
+      ref={ringOneDisplay}
+    >
+      <ringBufferGeometry attach="geometry" args={[11, 13, 30, 30, 6, 6.3]} />
+      <meshBasicMaterial attach="material" color="yellow" wireframe />
+    </mesh>
+  );
+}
+function RingTwo() {
+  const ringTwoDisplay = useRef();
+  useFrame(() => (ringTwoDisplay.current.rotation.y += 0.0));
+  return (
+    <mesh
+      visible
+      position={[300, 0, 0]}
+      rotation={[30, 10, 0]}
+      castShadow
+      ref={ringTwoDisplay}
+    >
+      <ringBufferGeometry attach="geometry" args={[12.5, 15, 30, 30, 6, 6.3]} />
+      <meshBasicMaterial attach="material" color="brown" wireframe />
+    </mesh>
+  );
+}
+function RingThree() {
+  const ringThreeDisplay = useRef();
+  useFrame(() => (ringThreeDisplay.current.rotation.y += 0.0));
+  return (
+    <mesh
+      visible
+      position={[300, 0, 0]}
+      rotation={[30, 10, 0]}
+      castShadow
+      ref={ringThreeDisplay}
+    >
+      <ringBufferGeometry attach="geometry" args={[15.5, 17, 30, 30, 6, 6.3]} />
+      <meshBasicMaterial attach="material" color="yellow" wireframe />
+    </mesh>
+  );
+}
+
 function Neptune() {
   const neptDisplay = useRef();
   useFrame(() => (neptDisplay.current.rotation.y += 0.01));
   return (
     <mesh
       visible
-      position={[315, 0, 0]}
+      position={[350, 0, 0]}
       rotation={[0, 0, 0]}
       castShadow
       ref={neptDisplay}
@@ -263,7 +322,7 @@ function Uranus() {
   return (
     <mesh
       visible
-      position={[350, 0, 0]}
+      position={[385, 0, 0]}
       rotation={[0, 0, 0]}
       castShadow
       ref={uranusDisplay}
@@ -287,7 +346,7 @@ function Pluto() {
   return (
     <mesh
       visible
-      position={[400, 0, 0]}
+      position={[420, 0, 0]}
       rotation={[0, 0, 0]}
       castShadow
       ref={pluDisplay}
@@ -296,7 +355,7 @@ function Pluto() {
       <meshBasicMaterial
         attach="material"
         wireframe
-        color="#violet"
+        color="violet"
         roughness={0.1}
         metalness={1}
         transparent
@@ -322,6 +381,7 @@ function App() {
         // position={[0, 0, 20]}
         className="canvas"
       >
+        {/* <KeyControls /> */}
         <Navigate />
         <Sun />
         <Mercury />
@@ -330,6 +390,9 @@ function App() {
         <Mars />
         <Jupiter />
         <Saturn />
+        <RingOne />
+        <RingTwo />
+        <RingThree />
         <Neptune />
         <Uranus />
         <Pluto />
