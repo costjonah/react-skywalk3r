@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import {
   Canvas,
   useFrame,
@@ -6,7 +6,7 @@ import {
   useThree,
   extend,
 } from "@react-three/fiber";
-import { Stars } from "@react-three/drei";
+import { Stars, FirstPersonControls } from "@react-three/drei";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import {
   CubeTextureLoader,
@@ -35,9 +35,34 @@ const Navigate = () => {
       args={[camera, domElement]}
       autoRotate={false}
       enableZoom={true}
+      // maxAzimuthAngle={Math.PI / 4}
+      // maxPolarAngle={Math.PI}
+      // minAzimuthAngle={-Math.PI / 4}
+      // minPolarAngle={0}
     />
   );
 };
+
+const Camera = () => {
+  const camera = useRef()
+  const { aspect, size, setDefaultCamera } = useThree()
+  const pixelToThreeUnitRatio = 1
+  const planeDistance = 0
+  const cameraDistance = 500
+  const distance = cameraDistance - planeDistance
+  const height = size.height / pixelToThreeUnitRatio
+  const halfFovRadians = Math.atan((height / 2) / distance)
+  const fov = 2 * halfFovRadians * (180/Math.PI)
+  useEffect(() => void setDefaultCamera(camera.current), [])
+  return <perspectiveCamera
+    ref={camera}
+    aspect={aspect}
+    fov={fov}
+    position={[0, 0, cameraDistance]}
+    onUpdate={self => self.updateProjectionMatrix()}
+  />
+}
+
 
 function SpaceEnv() {
   const { scene } = useThree();
@@ -74,13 +99,13 @@ function SpaceEnv() {
 
 function Sun() {
   const { scene, gl } = useThree();
-  const cubeRenderTarget = new WebGLCubeRenderTarget(256, {
+  const cubeRenderTarget = new WebGLCubeRenderTarget(255, {
     format: RGBFormat,
     generateMipmaps: true,
     minFilter: LinearMipmapLinearFilter,
   });
   const cubeCamera = new CubeCamera(1, 1000, cubeRenderTarget);
-  cubeCamera.position.set(0, 100, 0);
+  cubeCamera.position.set(0, 0, 0);
   scene.add(cubeCamera);
   useFrame(() => cubeCamera.update(gl, scene));
   return (
@@ -234,7 +259,7 @@ function Saturn() {
       <meshBasicMaterial
         attach="material"
         wireframe
-        color="#f2d492"
+        color="yellow"
         roughness={0.1}
         metalness={1}
         transparent
@@ -245,7 +270,7 @@ function Saturn() {
 
 function RingOne() {
   const ringOneDisplay = useRef();
-  useFrame(() => (ringOneDisplay.current.rotation.y += 0.0));
+  useFrame(() => (ringOneDisplay.current.rotation.x += 0.00));
   return (
     <mesh
       visible
@@ -286,7 +311,7 @@ function RingThree() {
       castShadow
       ref={ringThreeDisplay}
     >
-      <ringBufferGeometry attach="geometry" args={[15.5, 17, 30, 30, 6, 6.3]} />
+      <ringBufferGeometry attach="geometry" args={[15, 17, 30, 30, 6, 6.3]} />
       <meshBasicMaterial attach="material" color="yellow" wireframe />
     </mesh>
   );
@@ -367,22 +392,32 @@ function Pluto() {
 function App() {
   const width = window.innerWidth; // canvas width
   const height = window.innerHeight; // canvas heig
+
   return (
     <>
       <Canvas
         // camera={{ position: [0, 0, 20], fov: 50, near: 15, far: 40 }}
         // orthographic camera={{ zoom: 50, position: [0,0,100] }}
-        // perspectiveCamera
-        // name="camera"
-        // fov={75}
-        // aspect={width / height}
-        // near={0.1}
-        // far={1000}
-        // position={[0, 0, 20]}
-        className="canvas"
+
       >
+        {/* <Camera /> */}
         {/* <KeyControls /> */}
-        <Navigate />
+        {/* <Navigate /> */}
+        <FirstPersonControls
+         activeLook={true}
+        //  autoForward={false}
+        //  constrainVertical={false}
+         enabled={true}
+         heightCoef={1}
+         heightMax={1}
+         heightMin={0}
+        //  heightSpeed={true}
+         lookVertical={true}
+         lookSpeed={0.1}
+         movementSpeed={75}
+         verticalMax={Math.PI}
+         verticalMin={0}
+         />
         <Sun />
         <Mercury />
         <Venus />
