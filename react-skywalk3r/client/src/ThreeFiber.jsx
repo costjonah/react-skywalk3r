@@ -1,28 +1,9 @@
-import React, { useRef, useEffect, Suspense } from "react";
-import {
-  Canvas,
-  useFrame,
-  useLoader,
-  useThree,
-  extend,
-} from "@react-three/fiber";
-import {
-  Stars,
-  FirstPersonControls,
-  CurveModifier,
-  CurveModifierRef,
-} from "@react-three/drei";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import React, { Suspense } from "react";
+import { Canvas, useThree } from "@react-three/fiber";
+import { Stars, FirstPersonControls } from "@react-three/drei";
 import * as THREE from "three/build/three.module.js";
-import {
-  CubeTextureLoader,
-  CubeCamera,
-  WebGLCubeRenderTarget,
-  RGBFormat,
-  LinearMipmapLinearFilter,
-} from "three";
-import { FlyControls } from "three/examples/jsm/controls/FlyControls.js";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { CubeTextureLoader } from "three";
+
 import "/Users/JonahC/HR/SEI/Senior/react-skywalk3r/react-skywalk3r/client/dist/styles.css";
 
 import SunModel from "../models/SunModel.js";
@@ -37,8 +18,6 @@ import UranusModel from "../models/UranusModel.js";
 import NeptuneModel from "../models/NeptuneModel.js";
 import PlutoModel from "../models/PlutoModel.js";
 import HubbleModel from "../models/HubbleModel.js";
-
-extend({ OrbitControls });
 
 function SpaceEnv() {
   const { scene } = useThree();
@@ -55,7 +34,7 @@ function SpaceEnv() {
   return null;
 }
 
-function App() {
+function App({ targetClick }) {
   const width = window.innerWidth;
   const height = window.innerHeight;
   return (
@@ -85,37 +64,37 @@ function App() {
           verticalMin={0}
         />
         <Suspense fallback={null}>
-          <SunModel />
+          <SunModel targetClick={targetClick} />
         </Suspense>
         <Suspense fallback={null}>
-          <MercuryModel />
+          <MercuryModel targetClick={targetClick} />
         </Suspense>
         <Suspense fallback={null}>
-          <VenusModel />
+          <VenusModel targetClick={targetClick} />
         </Suspense>
         <Suspense fallback={null}>
-          <EarthModel />
+          <EarthModel targetClick={targetClick} />
         </Suspense>
         <Suspense fallback={null}>
-          <MoonModel />
+          <MoonModel targetClick={targetClick} />
         </Suspense>
         <Suspense fallback={null}>
-          <MarsModel />
+          <MarsModel targetClick={targetClick} />
         </Suspense>
         <Suspense fallback={null}>
-          <JupiterModel />
+          <JupiterModel targetClick={targetClick} />
         </Suspense>
         <Suspense fallback={null}>
-          <SaturnModel />
+          <SaturnModel targetClick={targetClick} />
         </Suspense>
         <Suspense fallback={null}>
-          <UranusModel />
+          <UranusModel targetClick={targetClick} />
         </Suspense>
         <Suspense fallback={null}>
-          <NeptuneModel />
+          <NeptuneModel targetClick={targetClick} />
         </Suspense>
         <Suspense fallback={null}>
-          <PlutoModel />
+          <PlutoModel targetClick={targetClick} />
         </Suspense>
         <Suspense fallback={null}>
           <HubbleModel />

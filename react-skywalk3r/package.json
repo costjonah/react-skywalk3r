@@ -20,9 +20,12 @@
     ]
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.15",
     "@react-three/cannon": "^4.0.1",
     "@react-three/drei": "^7.13.1",
     "@react-three/fiber": "^7.0.15",
+    "axios": "^0.23.0",
     "express": "^4.17.1",
     "nodemon": "^2.0.13",
     "react": "^17.0.2",
