@@ -1,10 +1,10 @@
 import React, { Suspense } from "react";
-import { Canvas, useThree } from "@react-three/fiber";
+import { Canvas, useThree, useLoader } from "@react-three/fiber";
 import { Stars, FirstPersonControls } from "@react-three/drei";
 import * as THREE from "three/build/three.module.js";
 import { CubeTextureLoader } from "three";
 
-import "/Users/JonahC/HR/SEI/Senior/react-skywalk3r/react-skywalk3r/client/dist/styles.css";
+import "../dist/styles.css";
 
 import SunModel from "../models/SunModel.js";
 import MercuryModel from "../models/MercuryModel.js";
@@ -45,7 +45,7 @@ function App({ targetClick }) {
           position: [100, 200, 500],
           fov: 50,
           aspect: width / height,
-          near: 1,
+          near: 0.001,
           far: 9000,
         }}
       >

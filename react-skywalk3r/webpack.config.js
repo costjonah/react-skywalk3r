@@ -1,3 +1,7 @@
+var webpack = require("webpack");
+var CompressionPlugin = require("compression-webpack-plugin");
+var DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
+
 const path = require("path");
 
 const SRC_DIR = path.join(__dirname, "/client/src");
@@ -9,6 +13,19 @@ module.exports = {
     path: DIST_DIR,
     filename: "bundle.js",
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      "process.env.NODE_ENV": JSON.stringify("production"),
+    }),
+    new DuplicatePackageCheckerPlugin(),
+    new CompressionPlugin({
+      filename: "[path].gz[query]",
+      algorithm: "gzip",
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8,
+    }),
+  ],
   module: {
     rules: [
       {

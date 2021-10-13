@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import "/Users/JonahC/HR/SEI/Senior/react-skywalk3r/react-skywalk3r/client/dist/styles.css";
+import "../dist/styles.css";
 import ThreeFiber from "./ThreeFiber.jsx";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
