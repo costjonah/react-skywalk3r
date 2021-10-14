@@ -5,8 +5,7 @@ let apiDataRequest = (planetId, callback) => {
     url: `https://api.le-systeme-solaire.net/rest/bodies/${planetId}`,
     headers: {
       "User-Agent": "request",
-      'Accept-Encoding': 'gzip, compress, br',
-      'Content-Encoding': 'gzip',
+      "Accept-Encoding": "gzip, compress, br",
     },
   };
 

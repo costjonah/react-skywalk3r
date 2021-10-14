@@ -10,7 +10,7 @@ export default function MercuryModel({ ...props }) {
   return (
     <>
       <group
-        onClick={(e) => props.targetClick('mercure')}
+        onClick={(e) => props.targetClick("mercure")}
         scale={[0.001, 0.001, 0.001]}
         ref={group}
         {...props}

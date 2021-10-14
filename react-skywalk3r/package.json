@@ -20,9 +20,9 @@
     ]
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.15",
-    "@react-three/cannon": "^4.0.1",
     "@react-three/drei": "^7.13.1",
     "@react-three/fiber": "^7.0.15",
     "axios": "^0.23.0",
@@ -47,8 +47,6 @@
     "style-loader": "^3.3.0",
     "url-loader": "^4.1.1",
     "webpack": "^5.58.1",
-    "webpack-bundle-analyzer": "^4.4.2",
-    "webpack-cli": "^4.9.0",
-    "webpack-dev-server": "^4.3.1"
+    "webpack-cli": "^4.9.0"
   }
 }

@@ -10,7 +10,7 @@ export default function JupiterModel({ ...props }) {
   return (
     <>
       <group
-        onClick={(e) => props.targetClick('jupiter')}
+        onClick={(e) => props.targetClick("jupiter")}
         scale={[0.0275, 0.0275, 0.0275]}
         ref={group}
         {...props}

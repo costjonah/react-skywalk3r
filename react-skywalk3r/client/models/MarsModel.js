@@ -10,7 +10,7 @@ export default function MarsModel({ ...props }) {
   return (
     <>
       <group
-        onClick={(e) => props.targetClick('mars')}
+        onClick={(e) => props.targetClick("mars")}
         scale={[0.00125, 0.00125, 0.00125]}
         ref={group}
         {...props}

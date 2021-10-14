@@ -10,7 +10,7 @@ export default function Model({ ...props }) {
   return (
     <>
       <group
-        onClick={(e) => props.targetClick('venus')}
+        onClick={(e) => props.targetClick("venus")}
         scale={[0.00215, 0.00215, 0.00215]}
         ref={group}
         {...props}

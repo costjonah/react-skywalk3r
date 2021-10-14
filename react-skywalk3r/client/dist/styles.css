@@ -41,6 +41,7 @@ code {
 canvas {
   outline: none;
 }
+
 .currentTarg {
   position: fixed;
   margin-top: 25px;
@@ -76,18 +77,9 @@ canvas {
   text-shadow: 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa,
     0 0 151px #0fa;
 }
-/* margin-top: 5px; */
-
-.title {
-  /* margin-top: 5px; */
-}
 
 .controls {
   text-align: center;
-}
-
-.githubHandle {
-  /* margin-top: 5px; */
 }
 
 ::-webkit-scrollbar {

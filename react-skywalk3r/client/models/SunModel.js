@@ -7,7 +7,7 @@ export default function SunModel({ ...props }) {
   const { nodes, materials } = useGLTF("./../public/sun/SunModel.gltf");
   return (
     <group
-    onClick={(e) => props.targetClick('soleil')}
+      onClick={(e) => props.targetClick("soleil")}
       scale={[0.2, 0.2, 0.2]}
       ref={group}
       {...props}

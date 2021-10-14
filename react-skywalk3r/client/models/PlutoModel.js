@@ -10,7 +10,7 @@ export default function PlutoModel({ ...props }) {
   return (
     <>
       <group
-        onClick={(e) => props.targetClick('pluton')}
+        onClick={(e) => props.targetClick("pluton")}
         scale={[0.0006, 0.0006, 0.0006]}
         ref={group}
         {...props}

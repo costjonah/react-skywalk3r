@@ -10,7 +10,7 @@ export default function SaturnModel({ ...props }) {
   return (
     <>
       <group
-        onClick={(e) => props.targetClick('saturne')}
+        onClick={(e) => props.targetClick("saturne")}
         scale={[0.0225, 0.0225, 0.0225]}
         ref={group}
         {...props}

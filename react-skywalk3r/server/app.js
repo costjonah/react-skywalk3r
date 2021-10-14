@@ -8,9 +8,10 @@ let app = express();
 app.use(express.json());
 app.use(expressStaticGzip(path.join(__dirname, "../client/dist")));
 app.use(express.static(path.join(__dirname, "../client/dist")));
-app.get('*.js', function (req, res, next) {
-  req.url = req.url + '.gz';
-  res.set('Content-Encoding', 'gzip');
+
+app.get("*.js", (req, res, next) => {
+  req.url = req.url + ".gz";
+  res.set("Content-Encoding", "gzip");
   next();
 });
 
@@ -18,7 +19,7 @@ app.get("/horizons/:planetId", (req, res) => {
   let planetId = req.params.planetId;
   apiDataRequest(planetId, (err, data) => {
     if (err) {
-      res.status(500).send(err);
+      res.status(404).send(err);
     } else {
       res.send(data);
     }

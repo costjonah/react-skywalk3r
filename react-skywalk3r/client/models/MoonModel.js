@@ -4,11 +4,10 @@ import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 export default function MoonModel({ ...props }) {
   const group = useRef();
-  // useFrame(() => (group.current.rotation.y += 0.005));
   const { nodes, materials } = useGLTF("./../public/moon/MoonModel.gltf");
   return (
     <group
-      onClick={(e) => props.targetClick('lune')}
+      onClick={(e) => props.targetClick("lune")}
       scale={[0.00065, 0.00065, 0.00065]}
       ref={group}
       {...props}

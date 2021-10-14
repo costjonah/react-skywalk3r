@@ -10,7 +10,7 @@ export default function UranusModel({ ...props }) {
   return (
     <>
       <group
-        onClick={(e) => props.targetClick('uranus')}
+        onClick={(e) => props.targetClick("uranus")}
         scale={[0.01, 0.01, 0.01]}
         ref={group}
         {...props}

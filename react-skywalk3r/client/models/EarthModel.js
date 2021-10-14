@@ -10,7 +10,7 @@ export default function EarthModel({ ...props }) {
   return (
     <>
       <group
-        onClick={(e) => props.targetClick('terre')}
+        onClick={(e) => props.targetClick("terre")}
         scale={[0.0025, 0.0025, 0.0025]}
         ref={group}
         {...props}

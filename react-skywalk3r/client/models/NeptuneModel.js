@@ -10,7 +10,7 @@ export default function NeptuneModel({ ...props }) {
   return (
     <>
       <group
-        onClick={(e) => props.targetClick('neptune')}
+        onClick={(e) => props.targetClick("neptune")}
         scale={[0.009, 0.009, 0.009]}
         ref={group}
         {...props}

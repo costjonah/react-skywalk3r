@@ -1,21 +1,21 @@
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
 
 export default function Model({ ...props }) {
-  const group = useRef()
-  const { nodes, materials } = useGLTF("./../public/hubble/HubbleModel.gltf")
+  const group = useRef();
+  const { nodes, materials } = useGLTF("./../public/hubble/HubbleModel.gltf");
   return (
     <group
-    onClick={(e) => console.log('Hubble')}
-    scale={[0.01, 0.01, 0.01]}
-    ref={group}
-    {...props}
-    dispose={null}
-    visible
-    rotation={[0, 0, 0]}
-    position={[178.5, 0, 1]}
-    castShadow
-  >
+      onClick={(e) => console.log("Hubble")}
+      scale={[0.01, 0.01, 0.01]}
+      ref={group}
+      {...props}
+      dispose={null}
+      visible
+      rotation={[0, 0, 0]}
+      position={[178.5, 0, 1]}
+      castShadow
+    >
       <mesh geometry={nodes._root.geometry} material={materials.transparent}>
         <mesh
           geometry={nodes.alpha_tex01.geometry}
@@ -81,7 +81,7 @@ export default function Model({ ...props }) {
         />
       </mesh>
     </group>
-  )
+  );
 }
 
-useGLTF.preload("./../public/hubble/HubbleModel.gltf")
+useGLTF.preload("./../public/hubble/HubbleModel.gltf");
