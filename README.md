@@ -26,14 +26,3 @@ npm run build-dev
 
 Open the file `dist/index.html` in your browser
 
-## Testing
-
-To run unit tests:
-
-```sh
-npm test
-```
-
-## Credits
-
-Made with [createapp.dev](https://createapp.dev/)
