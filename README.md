@@ -20,6 +20,12 @@ First install dependencies:
 npm install
 ```
 
+To start server on port 8080
+
+```sh
+npm start
+```
+
 To create a production build:
 
 ```sh
